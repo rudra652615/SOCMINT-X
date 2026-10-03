@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOCMINT-X | Intelligence</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
+<body data-page="intelligence">
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="SOCMINT-X home"><span class="brand-mark">SX</span><span><strong>SOCMINT-X</strong><small>Intelligence OS</small></span></a>
+            <nav class="nav-list" aria-label="Main navigation">
+                <a class="nav-item" href="dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="analysis.html"><i data-lucide="radar"></i><span>Analysis</span></a>
+                <a class="nav-item" href="analytics.html"><i data-lucide="chart-no-axes-column-increasing"></i><span>Analytics</span></a>
+                <a class="nav-item active" href="intelligence.html" aria-current="page"><i data-lucide="radio-tower"></i><span>Intelligence</span></a>
+                <a class="nav-item" href="reports.html"><i data-lucide="file-text"></i><span>Reports</span></a>
+                <a class="nav-item" href="settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-status"><span class="pulse"></span><span id="pageSystemStatus">Ready</span></div>
+        </aside>
+        <main class="main">
+            <header class="topbar"><div><p class="eyebrow">Evidence</p><h1>Intelligence Brief</h1></div><div class="clock-block"><span id="clock">--:--:--</span><small id="todayLabel">Local time</small></div></header>
+            <section class="panel page-panel"><div class="panel-heading"><div><p class="eyebrow">Latest investigation</p><h2 id="intelligenceKeyword">No investigation selected</h2></div><span class="badge" id="intelligenceUpdated">No scan yet</span></div><p class="summary-text" id="intelligenceSummary">Run an investigation to view a summary of collected public records and their source coverage.</p></section>
+            <section class="panel page-panel gemini-panel">
+                <div class="panel-heading"><div><p class="eyebrow">AI synthesis · Gemini</p><h2>What the collected records say</h2></div><span class="badge" id="geminiStatus">Not run</span></div>
+                <p class="gemini-disclaimer">AI-generated from the returned titles and descriptions only. Citations such as [S1] match the Evidence IDs below; verify details against the linked originals. Gemini location pins are approximate named-place estimates, not verified post locations.</p>
+                <div class="gemini-summary" id="geminiSummary">Add a Gemini API key in Settings to create a cited synthesis from actual collected records.</div>
+            </section>
+            <section class="page-grid">
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Collection health</p><h2>Source status</h2></div></div><div class="source-health" id="intelligenceSources"><div class="empty-state"><p>No source status available yet.</p></div></div></article>
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Signal overview</p><h2>Observed sentiment</h2></div></div><div class="page-content"><div class="metrics-grid metrics-two"><article class="metric-card positive sentiment-data"><span>Positive</span><strong id="intelligencePositive">N/A</strong><small>Analyzed records</small></article><article class="metric-card negative sentiment-data"><span>Negative</span><strong id="intelligenceNegative">N/A</strong><small id="intelligenceAnalyzed">No scan yet</small></article></div><div class="page-actions"><a class="ghost-button" href="analytics.html">View analytics</a><a class="ghost-button" href="reports.html">Create report</a></div></div></article>
+            </section>
+            <section class="page-grid intelligence-live-grid">
+                <article class="panel live-map-panel"><div class="panel-heading"><div><p class="eyebrow">Geographic context</p><h2>Evidence Map</h2></div><span class="badge" id="intelligenceMapCount">No locations</span></div><div class="map-wrap evidence-map"><img src="assets/world-map.svg" alt="World map with source-provided and separately labeled Gemini-estimated locations"><div class="location-markers" id="intelligenceMapMarkers"></div><div class="geo-note" id="intelligenceMapStatus">A scan has not returned location data.</div></div><div class="map-legend" aria-label="Map marker legend"><span><i class="map-legend-dot source"></i>Source coordinates</span><span><i class="map-legend-dot estimated"></i>Gemini estimate</span></div><details class="location-estimate-details" id="intelligenceLocationEstimateDetails" hidden><summary>Gemini place estimates</summary><ol id="intelligenceLocationEstimates"></ol></details><p class="map-disclaimer">With Gemini configured, AI pins are approximate place-level estimates supported by an explicit location mention and quote—not post geolocation. Gemini confidence is uncalibrated. Publisher details remain visible in the evidence feed.</p></article>
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Latest scan snapshot</p><h2>Live Intelligence Feed</h2></div><span class="badge" id="intelligenceCount">0 records</span></div><div class="feed-list" id="intelligenceEvidence"><div class="empty-state"><h3>No evidence yet</h3><p>Start a scan from the Analysis page.</p></div></div></article>
+            </section>
+        </main>
+    </div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="js/api-keys.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+</html>

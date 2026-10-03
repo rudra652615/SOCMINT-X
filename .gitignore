@@ -1,0 +1,21 @@
+# Local secrets and environment-specific settings
+.env
+.env.*
+!.env.example
+/.socmint-x-secrets.php
+
+# Generated runtime data
+/storage/cache/*
+!/storage/cache/.gitkeep
+/storage/reports/*
+!/storage/reports/.gitkeep
+
+# PHP tooling output
+/vendor/
+/.phpunit.cache/
+*.log
+
+# Local operating-system and editor files
+.DS_Store
+Thumbs.db
+.vscode/

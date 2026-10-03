@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOCMINT-X | Analytics</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
+<body data-page="analytics">
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="SOCMINT-X home"><span class="brand-mark">SX</span><span><strong>SOCMINT-X</strong><small>Intelligence OS</small></span></a>
+            <nav class="nav-list" aria-label="Main navigation">
+                <a class="nav-item" href="dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="analysis.html"><i data-lucide="radar"></i><span>Analysis</span></a>
+                <a class="nav-item active" href="analytics.html" aria-current="page"><i data-lucide="chart-no-axes-column-increasing"></i><span>Analytics</span></a>
+                <a class="nav-item" href="intelligence.html"><i data-lucide="radio-tower"></i><span>Intelligence</span></a>
+                <a class="nav-item" href="reports.html"><i data-lucide="file-text"></i><span>Reports</span></a>
+                <a class="nav-item" href="settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-status"><span class="pulse"></span><span id="pageSystemStatus">Ready</span></div>
+        </aside>
+        <main class="main">
+            <header class="topbar"><div><p class="eyebrow">Signals</p><h1>Investigation Analytics</h1></div><div class="clock-block"><span id="clock">--:--:--</span><small id="todayLabel">Local time</small></div></header>
+            <p class="page-intro">A breakdown of source coverage and sentiment from the latest completed investigation. Charts use actual returned records only.</p>
+            <section class="panel page-panel"><div class="panel-heading"><div><p class="eyebrow">Selected investigation</p><h2 id="analyticsKeyword">No investigation selected</h2></div><a class="badge" href="analysis.html">Run analysis</a></div><div class="metrics-grid metrics-inset"><article class="metric-card"><span>Total Results</span><strong id="analyticsTotal">—</strong><small>Source records</small></article><article class="metric-card sentiment-data"><span>Analyzed</span><strong id="analyticsAnalyzed">—</strong><small>Usable sentiment predictions</small></article><article class="metric-card positive sentiment-data"><span>Positive</span><strong id="analyticsPositive">N/A</strong><small>Of analyzed records</small></article><article class="metric-card negative sentiment-data"><span>Negative</span><strong id="analyticsNegative">N/A</strong><small>Of analyzed records</small></article></div></section>
+            <section class="panel page-panel timeline-panel"><div class="panel-heading"><div><p class="eyebrow">Publication activity</p><h2>Records by publication date</h2></div><span class="badge" id="publicationTimelineCount">Awaiting scan</span></div><p class="chart-note">Counts show records in this scan's returned sample, grouped by their published date—not total platform activity.</p><div class="timeline-chart" id="publicationTimeline"><div class="empty-state"><p>Run an investigation to chart returned publication dates.</p></div></div></section>
+            <section class="page-grid">
+                <article class="panel sentiment-data"><div class="panel-heading"><div><p class="eyebrow">Classification</p><h2>Sentiment distribution</h2></div><span class="badge" id="analyticsSentimentCount">No scan yet</span></div><div class="sentiment-layout"><div class="donut" id="analyticsDonut"><span id="analyticsDonutCenter">N/A</span></div><div class="legend"><span><i class="legend-dot good"></i>Positive <strong id="analyticsPositiveLegend">N/A</strong></span><span><i class="legend-dot bad"></i>Negative <strong id="analyticsNegativeLegend">N/A</strong></span><span><i class="legend-dot muted"></i>Not analyzed <strong id="analyticsUnscored">—</strong></span></div></div></article>
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Collection</p><h2>Records by source</h2></div></div><div class="source-bars" id="analyticsSourceBars"><div class="empty-state"><p>No source data yet.</p></div></div></article>
+            </section>
+            <section class="panel page-panel"><div class="panel-heading"><div><p class="eyebrow">Coverage</p><h2>Source availability</h2></div></div><div class="source-health" id="analyticsSources"><div class="empty-state"><p>Run an investigation to load source status.</p></div></div></section>
+        </main>
+    </div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="js/api-keys.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+</html>

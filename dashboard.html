@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOCMINT-X | Dashboard</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
+<body data-page="dashboard">
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="SOCMINT-X home"><span class="brand-mark">SX</span><span><strong>SOCMINT-X</strong><small>Intelligence OS</small></span></a>
+            <nav class="nav-list" aria-label="Main navigation">
+                <a class="nav-item active" href="dashboard.html" aria-current="page"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="analysis.html"><i data-lucide="radar"></i><span>Analysis</span></a>
+                <a class="nav-item" href="analytics.html"><i data-lucide="chart-no-axes-column-increasing"></i><span>Analytics</span></a>
+                <a class="nav-item" href="intelligence.html"><i data-lucide="radio-tower"></i><span>Intelligence</span></a>
+                <a class="nav-item" href="reports.html"><i data-lucide="file-text"></i><span>Reports</span></a>
+                <a class="nav-item" href="settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-status"><span class="pulse"></span><span id="pageSystemStatus">Ready</span></div>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <div><p class="eyebrow">Overview</p><h1>Operations Dashboard</h1></div>
+                <div class="clock-block"><span id="clock">--:--:--</span><small id="todayLabel">Local time</small></div>
+            </header>
+            <p class="page-intro">Your latest investigation at a glance. Run a scan to collect public video and news signals, then explore the results across the connected workspaces.</p>
+            <section class="metrics-grid" aria-label="Latest investigation metrics">
+                <article class="metric-card"><span>Latest Target</span><strong id="dashboardKeyword">—</strong><small id="dashboardWhen">No scan yet</small></article>
+                <article class="metric-card"><span>Total Results</span><strong id="dashboardTotal">—</strong><small>Public source records</small></article>
+                <article class="metric-card positive"><span>Positive</span><strong id="dashboardPositive">N/A</strong><small>Of analyzed records</small></article>
+                <article class="metric-card negative"><span>Negative</span><strong id="dashboardNegative">N/A</strong><small id="dashboardAnalyzed">No scan yet</small></article>
+            </section>
+            <section class="page-grid">
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Get started</p><h2>Run an investigation</h2></div><span class="badge">Live sources</span></div><div class="page-content"><p class="summary-text">Search public YouTube and GNews results, then classify returned text with the configured sentiment service.</p><div class="page-actions"><a class="primary-button" href="analysis.html">Open Analysis</a><a class="ghost-button" href="settings.html">Preferences</a></div></div></article>
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Workspace</p><h2>Explore results</h2></div></div><div class="source-health">
+                    <a class="source-row" href="analytics.html"><span><strong>Analytics</strong><small>Sentiment and source breakdowns</small></span><span class="workspace-link-icon" aria-hidden="true">↗</span></a>
+                    <a class="source-row" href="intelligence.html"><span><strong>Intelligence</strong><small>Investigation summary and evidence</small></span><span class="workspace-link-icon" aria-hidden="true">↗</span></a>
+                    <a class="source-row" href="reports.html"><span><strong>Reports</strong><small>Build and export an analyst brief</small></span><span class="workspace-link-icon" aria-hidden="true">↗</span></a>
+                </div></article>
+            </section>
+            <section class="panel page-panel analyst-summary-panel"><div class="panel-heading"><div><p class="eyebrow">Assessment</p><h2>Analyst Summary</h2></div><span class="badge" id="dashboardSummaryStatus">Awaiting scan</span></div><p class="summary-text" id="dashboardSummary">No investigation has been run yet. Start a scan to build a summary from returned source records.</p></section>
+            <section class="page-grid intelligence-live-grid">
+                <article class="panel live-map-panel"><div class="panel-heading"><div><p class="eyebrow">Geographic context</p><h2>Evidence Map</h2></div><span class="badge" id="dashboardMapCount">No locations</span></div><div class="map-wrap evidence-map"><img src="assets/world-map.svg" alt="World map with source-provided and separately labeled Gemini-estimated locations"><div class="location-markers" id="dashboardMapMarkers"></div><div class="geo-note" id="dashboardMapStatus">A scan has not returned location data.</div></div><div class="map-legend" aria-label="Map marker legend"><span><i class="map-legend-dot source"></i>Source coordinates</span><span><i class="map-legend-dot estimated"></i>Gemini estimate</span></div><details class="location-estimate-details" id="dashboardLocationEstimateDetails" hidden><summary>Gemini place estimates</summary><ol id="dashboardLocationEstimates"></ol></details><p class="map-disclaimer">With Gemini configured, AI pins are approximate place-level estimates supported by an explicit location mention and quote—not post geolocation. Gemini confidence is uncalibrated.</p></article>
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Latest scan snapshot</p><h2>Live Intelligence Feed</h2></div><a class="badge" href="intelligence.html">Full feed</a></div><div class="feed-list" id="dashboardEvidence"><div class="empty-state"><h3>No investigation yet</h3><p>Run your first scan from the Analysis page.</p></div></div></article>
+            </section>
+        </main>
+    </div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="js/api-keys.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+</html>

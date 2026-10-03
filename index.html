@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOCMINT-X | Social Media Intelligence Platform</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
+<body data-page="command">
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="SOCMINT-X dashboard">
+                <span class="brand-mark">SX</span>
+                <span>
+                    <strong>SOCMINT-X</strong>
+                    <small>Intelligence OS</small>
+                </span>
+            </a>
+
+            <nav class="nav-list">
+                <a class="nav-item active" href="index.html" aria-current="page"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="analysis.html"><i data-lucide="radar"></i><span>Analysis</span></a>
+                <a class="nav-item" href="analytics.html"><i data-lucide="chart-no-axes-column-increasing"></i><span>Analytics</span></a>
+                <a class="nav-item" href="intelligence.html"><i data-lucide="radio-tower"></i><span>Intelligence</span></a>
+                <a class="nav-item" href="reports.html"><i data-lucide="file-text"></i><span>Reports</span></a>
+                <a class="nav-item" href="settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a>
+            </nav>
+
+            <div class="sidebar-status">
+                <span class="pulse"></span>
+                <span id="systemStatus">Ready</span>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Social Media Intelligence Platform</p>
+                    <h1>Public Signal Command Center</h1>
+                </div>
+                <div class="clock-block">
+                    <span id="clock">--:--:--</span>
+                    <small id="todayLabel">Local time</small>
+                </div>
+            </header>
+
+            <section class="search-band" aria-label="Investigation search">
+                <form class="search-form" id="searchForm">
+                    <label class="visually-hidden" for="searchInput">Keyword</label>
+                    <i data-lucide="search"></i>
+                    <input id="searchInput" name="keyword" maxlength="200" autocomplete="off" placeholder="Investigate a brand, person, topic, event, or campaign">
+                    <button class="primary-button" id="searchButton" type="submit">
+                        <i data-lucide="scan-search"></i>
+                        <span>Start Scan</span>
+                    </button>
+                </form>
+                <div class="quick-actions" aria-label="Quick searches">
+                    <button type="button" data-query="OpenAI">OpenAI</button>
+                    <button type="button" data-query="cyber security">Cyber Security</button>
+                    <button type="button" data-query="climate policy">Climate Policy</button>
+                </div>
+            </section>
+
+            <section class="metrics-grid" aria-label="Metrics">
+                <article class="metric-card">
+                    <span>Total Results</span>
+                    <strong id="mentionCount">—</strong>
+                    <small id="mentionDelta">No scan yet</small>
+                </article>
+                <article class="metric-card positive sentiment-data">
+                    <span>Positive</span>
+                    <strong id="positiveCount">N/A</strong>
+                    <small id="positiveMeta">No scan yet</small>
+                </article>
+                <article class="metric-card negative sentiment-data">
+                    <span>Negative</span>
+                    <strong id="negativeCount">N/A</strong>
+                    <small id="riskResult">Not assessed</small>
+                </article>
+                <article class="metric-card">
+                    <span>Active Sources</span>
+                    <strong id="sourceCount">—</strong>
+                    <small id="topSourceResult">Awaiting data</small>
+                </article>
+            </section>
+
+            <section class="workspace-grid">
+                <div class="panel map-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">Operations</p>
+                            <h2>Coverage Map</h2>
+                        </div>
+                        <span class="badge" id="scanBadge">Standby</span>
+                    </div>
+                    <div class="map-wrap evidence-map command-evidence-map">
+                        <img src="assets/world-map.svg" alt="World signal map">
+                        <div class="location-markers" id="commandMapMarkers"></div>
+                        <div class="geo-note" id="geoNote">
+                            <i data-lucide="map-pin-off"></i>
+                            <span>No geolocation returned yet</span>
+                        </div>
+                    </div>
+                    <div class="map-legend" aria-label="Map marker legend"><span><i class="map-legend-dot source"></i>Source coordinates</span><span><i class="map-legend-dot estimated"></i>Gemini estimate</span></div>
+                    <details class="location-estimate-details" id="commandLocationEstimateDetails" hidden><summary>Gemini place estimates</summary><ol id="commandLocationEstimates"></ol></details>
+                    <p class="map-disclaimer">With a Gemini key configured, AI pins are approximate place-level estimates—not post geolocation—and appear only when a record explicitly names a place with a verifiable quote. Gemini confidence is uncalibrated.</p>
+                    <div class="map-stats">
+                        <span><b id="keywordResult">-</b><small>Target</small></span>
+                        <span><b id="sourceResult">-</b><small>Sources</small></span>
+                        <span><b id="updateResult">-</b><small>Updated</small></span>
+                    </div>
+                </div>
+
+                <div class="panel chart-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">Sentiment</p>
+                            <h2>Classification</h2>
+                        </div>
+                        <span class="badge sentiment-data" id="sentimentBadge">No scan yet</span>
+                    </div>
+                    <div class="sentiment-layout sentiment-data">
+                        <div class="donut" id="sentimentDonut" aria-label="Sentiment chart">
+                            <span id="donutCenter">N/A</span>
+                        </div>
+                        <div class="legend">
+                            <span><i class="legend-dot good"></i>Positive</span>
+                            <span><i class="legend-dot bad"></i>Negative</span>
+                            <span><i class="legend-dot muted"></i>Unscored</span>
+                        </div>
+                    </div>
+                    <div class="source-bars" id="sourceBars"><p class="page-message">Run an investigation to load source counts.</p></div>
+                </div>
+            </section>
+
+            <section class="content-grid">
+                <div class="panel" id="evidence">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">Evidence</p>
+                            <h2>Live Intelligence Feed</h2>
+                        </div>
+                        <p class="feed-snapshot-note">Latest scan snapshot · refreshes when a new scan completes</p>
+                        <div class="segmented" aria-label="Feed filter">
+                            <button class="active" type="button" data-filter="all">All</button>
+                            <button type="button" data-filter="YouTube">YouTube</button>
+                            <button type="button" data-filter="GNews">GNews</button>
+                        </div>
+                    </div>
+                    <div class="feed-list" id="postsContainer">
+                        <div class="empty-state">
+                            <i data-lucide="satellite-dish"></i>
+                            <h3>Ready for investigation</h3>
+                            <p>Enter a target above to collect public video and news signals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="side-stack">
+                    <div class="panel" id="sources">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">Collection</p>
+                                <h2>Source Health</h2>
+                            </div>
+                        </div>
+                        <div class="source-health" id="sourceHealth"></div>
+                    </div>
+
+                    <div class="panel" id="report">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">Brief</p>
+                                <h2>Analyst Summary</h2>
+                            </div>
+                        </div>
+                        <p class="summary-text" id="summaryText">No investigation has been run yet.</p>
+                        <div class="export-row">
+                            <button class="ghost-button" type="button" id="copyReportButton">
+                                <i data-lucide="copy"></i>
+                                <span>Copy</span>
+                            </button>
+                            <button class="ghost-button" type="button" id="exportJsonButton">
+                                <i data-lucide="download"></i>
+                                <span>JSON</span>
+                            </button>
+                            <button class="ghost-button" type="button" id="exportCsvButton">
+                                <i data-lucide="table"></i>
+                                <span>CSV</span>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="js/api-keys.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

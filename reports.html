@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOCMINT-X | Reports</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
+<body data-page="reports">
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="SOCMINT-X home"><span class="brand-mark">SX</span><span><strong>SOCMINT-X</strong><small>Intelligence OS</small></span></a>
+            <nav class="nav-list" aria-label="Main navigation">
+                <a class="nav-item" href="dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="analysis.html"><i data-lucide="radar"></i><span>Analysis</span></a>
+                <a class="nav-item" href="analytics.html"><i data-lucide="chart-no-axes-column-increasing"></i><span>Analytics</span></a>
+                <a class="nav-item" href="intelligence.html"><i data-lucide="radio-tower"></i><span>Intelligence</span></a>
+                <a class="nav-item active" href="reports.html" aria-current="page"><i data-lucide="file-text"></i><span>Reports</span></a>
+                <a class="nav-item" href="settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-status"><span class="pulse"></span><span id="pageSystemStatus">Ready</span></div>
+        </aside>
+        <main class="main">
+            <header class="topbar"><div><p class="eyebrow">Briefing</p><h1>Investigation Reports</h1></div><div class="clock-block"><span id="clock">--:--:--</span><small id="todayLabel">Local time</small></div></header>
+            <p class="page-intro">Build a shareable report from the latest real investigation data. Reports are composed in your browser; no unavailable report-generation API is assumed.</p>
+            <section class="panel page-panel">
+                <div class="panel-heading"><div><p class="eyebrow">Report controls</p><h2 id="reportTarget">No investigation selected</h2></div><span class="badge" id="reportTimestamp">No scan yet</span></div>
+                <div class="page-content">
+                    <p class="page-message" id="reportStatus" role="status" aria-live="polite">Run an investigation before generating a report.</p>
+                    <div class="page-actions">
+                        <button class="primary-button" id="generatePageReport" type="button">Generate Report</button>
+                        <button class="ghost-button" id="copyPageReport" type="button">Copy</button>
+                        <button class="ghost-button" id="downloadPageReport" type="button">Save as PDF</button>
+                    </div>
+                </div>
+            </section>
+            <section class="panel page-panel print-report"><div class="panel-heading"><div><p class="eyebrow">Analyst brief</p><h2>Findings</h2></div></div><div class="page-content report-copy" id="pageReportContent"><div class="empty-state"><h3>No report generated</h3><p>Generate a brief after running an investigation with returned records.</p></div></div></section>
+            <div class="page-actions"><a class="ghost-button" href="analysis.html">Run another investigation</a><a class="ghost-button" href="analytics.html">View analytics</a></div>
+        </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="js/api-keys.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOCMINT-X | Settings</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
+<body data-page="settings">
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="SOCMINT-X home"><span class="brand-mark">SX</span><span><strong>SOCMINT-X</strong><small>Intelligence OS</small></span></a>
+            <nav class="nav-list" aria-label="Main navigation">
+                <a class="nav-item" href="dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="analysis.html"><i data-lucide="radar"></i><span>Analysis</span></a>
+                <a class="nav-item" href="analytics.html"><i data-lucide="chart-no-axes-column-increasing"></i><span>Analytics</span></a>
+                <a class="nav-item" href="intelligence.html"><i data-lucide="radio-tower"></i><span>Intelligence</span></a>
+                <a class="nav-item" href="reports.html"><i data-lucide="file-text"></i><span>Reports</span></a>
+                <a class="nav-item active" href="settings.html" aria-current="page"><i data-lucide="settings-2"></i><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-status"><span class="pulse"></span><span id="pageSystemStatus">Ready</span></div>
+        </aside>
+        <main class="main">
+            <header class="topbar"><div><p class="eyebrow">Preferences</p><h1>Application Settings</h1></div><div class="clock-block"><span id="clock">--:--:--</span><small id="todayLabel">Local time</small></div></header>
+            <p class="page-intro">Preferences and optional API keys are saved in this browser only. Add keys under Connected sources to use real external data; anyone with access to this browser profile can use or replace them.</p>
+            <section class="page-grid">
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Behavior</p><h2>Investigation preferences</h2></div></div><div class="page-content settings-list">
+                    <label class="setting-row" for="autoRefresh"><span><strong>Auto refresh</strong><small>Repeat the latest real-data scan at the interval below</small></span><input id="autoRefresh" data-setting="autoRefresh" type="checkbox"></label>
+                    <label class="setting-row" for="notifications"><span><strong>Notifications</strong><small>Notify after a scan finishes (browser permission required)</small></span><input id="notifications" data-setting="notifications" type="checkbox"></label>
+                    <label class="setting-row" for="liveFeed"><span><strong>Evidence feed</strong><small>Show returned public records on dashboard and intelligence pages</small></span><input id="liveFeed" data-setting="liveFeed" type="checkbox"></label>
+                    <label class="setting-row" for="sentimentAnalysis"><span><strong>Sentiment analysis</strong><small>Show available sentiment metrics and charts</small></span><input id="sentimentAnalysis" data-setting="sentimentAnalysis" type="checkbox"></label>
+                    <label class="setting-row" for="reportExport"><span><strong>Report export</strong><small>Enable real-data report generation and PDF printing</small></span><input id="reportExport" data-setting="reportExport" type="checkbox"></label>
+                    <label class="setting-row" for="theme"><span><strong>Color theme</strong><small>Choose the dashboard appearance</small></span><select id="theme" data-setting="theme"><option value="dark">Signal dark</option><option value="light">Daylight</option></select></label>
+                </div></article>
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Limits</p><h2>Display preferences</h2></div></div><div class="page-content settings-list">
+                    <label class="setting-row" for="maxResults"><span><strong>Maximum results</strong><small>Maximum records requested from each source per scan (1–50)</small></span><input id="maxResults" data-setting="maxResults" type="number" min="1" max="50"></label>
+                    <label class="setting-row" for="refreshInterval"><span><strong>Refresh interval</strong><small>Seconds between refreshes (10–3600)</small></span><input id="refreshInterval" data-setting="refreshInterval" type="number" min="10" max="3600"></label>
+                    <p class="page-message" id="settingsStatus" role="status" aria-live="polite"></p>
+                    <div class="page-actions"><button class="primary-button" id="saveSettingsButton" type="button">Save Settings</button><button class="ghost-button" id="resetSettingsButton" type="button">Reset Defaults</button></div>
+                </div></article>
+            </section>
+            <section class="panel page-panel">
+                <div class="panel-heading"><div><p class="eyebrow">Connected sources</p><h2>API credentials</h2></div><span class="badge">No password required</span></div>
+                <div class="page-content">
+                    <p class="page-intro">Add the keys for the real data sources you want to use. Keys are saved in this browser and sent to your PHP backend only when you run a scan. Keys configured on the PHP host take precedence. On a shared device, anyone using this browser can use or replace browser keys; use a private browser and HTTPS.</p>
+                    <form id="apiKeyForm">
+                        <div id="apiKeyFields" class="api-key-grid"></div>
+                        <div class="page-actions">
+                            <button class="primary-button" id="saveApiKeysButton" type="submit">Save API keys</button>
+                            <button class="ghost-button" id="clearApiKeysButton" type="button">Remove saved keys</button>
+                        </div>
+                    </form>
+                    <p class="page-message" id="apiKeyStatus" role="status" aria-live="polite">Loading API keys…</p>
+                    <div class="page-actions"><a class="ghost-button" href="analysis.html">Check source status</a><a class="ghost-button" href="README.md">Hosting instructions</a></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="js/api-keys.js"></script>
+    <script src="js/pages.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

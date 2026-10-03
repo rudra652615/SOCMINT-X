@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SOCMINT-X | Analysis</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
+<body data-page="analysis">
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="SOCMINT-X home"><span class="brand-mark">SX</span><span><strong>SOCMINT-X</strong><small>Intelligence OS</small></span></a>
+            <nav class="nav-list" aria-label="Main navigation">
+                <a class="nav-item" href="dashboard.html"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></a>
+                <a class="nav-item active" href="analysis.html" aria-current="page"><i data-lucide="radar"></i><span>Analysis</span></a>
+                <a class="nav-item" href="analytics.html"><i data-lucide="chart-no-axes-column-increasing"></i><span>Analytics</span></a>
+                <a class="nav-item" href="intelligence.html"><i data-lucide="radio-tower"></i><span>Intelligence</span></a>
+                <a class="nav-item" href="reports.html"><i data-lucide="file-text"></i><span>Reports</span></a>
+                <a class="nav-item" href="settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-status"><span class="pulse"></span><span id="pageSystemStatus">Ready</span></div>
+        </aside>
+        <main class="main">
+            <header class="topbar"><div><p class="eyebrow">Collection</p><h1>Investigation Analysis</h1></div><div class="clock-block"><span id="clock">--:--:--</span><small id="todayLabel">Local time</small></div></header>
+            <p class="page-intro">Search a public topic, brand, person, event, or campaign. Results are collected by the PHP backend and shared with Analytics, Intelligence, and Reports on this browser.</p>
+            <section class="search-band">
+                <form class="search-form" id="pageSearchForm">
+                    <label class="visually-hidden" for="pageSearchInput">Investigation keyword</label>
+                    <i data-lucide="search"></i>
+                    <input id="pageSearchInput" name="keyword" maxlength="200" autocomplete="off" placeholder="Enter a keyword to investigate">
+                    <button class="primary-button" id="pageSearchButton" type="submit"><i data-lucide="scan-search"></i><span>Start Scan</span></button>
+                </form>
+                <div class="quick-actions" aria-label="Quick searches">
+                    <button type="button" data-page-query="OpenAI">OpenAI</button>
+                    <button type="button" data-page-query="cyber security">Cyber Security</button>
+                    <button type="button" data-page-query="climate policy">Climate Policy</button>
+                </div>
+                <p class="page-message" id="pageStatus" role="status" aria-live="polite">Ready for an investigation.</p>
+            </section>
+            <section class="metrics-grid" aria-label="Investigation results">
+                <article class="metric-card"><span>Target</span><strong id="analysisKeyword">—</strong><small>Current investigation</small></article>
+                <article class="metric-card"><span>Total Results</span><strong id="analysisTotal">—</strong><small>Across configured sources</small></article>
+                <article class="metric-card positive sentiment-data"><span>Positive</span><strong id="analysisPositive">N/A</strong><small>Sentiment share</small></article>
+                <article class="metric-card negative sentiment-data"><span>Negative</span><strong id="analysisNegative">N/A</strong><small><span id="analysisProcessed">—</span> analyzed</small></article>
+            </section>
+            <section class="page-grid">
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Sources</p><h2>Collection status</h2></div></div><div class="source-health" id="analysisSources"><div class="source-row"><div><strong>YouTube</strong><small>Run a scan to check availability</small></div><span class="health-dot"></span></div><div class="source-row"><div><strong>GNews</strong><small>Run a scan to check availability</small></div><span class="health-dot"></span></div></div></article>
+                <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Next</p><h2>Explore this scan</h2></div></div><div class="page-content"><p class="summary-text">The latest successful investigation is shared between pages on this browser.</p><div class="page-actions"><a class="ghost-button" href="analytics.html">Analytics</a><a class="ghost-button" href="intelligence.html">Evidence</a><a class="ghost-button" href="reports.html">Build report</a></div></div></article>
+            </section>
+            <section class="panel page-panel"><div class="panel-heading"><div><p class="eyebrow">Collected records</p><h2>Evidence results</h2></div><span class="badge" id="analysisResultCount">0 records</span></div><div class="page-content" id="analysisResults"><div class="empty-state"><h3>No results yet</h3><p>Start an investigation to view matching public records.</p></div></div></section>
+        </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="js/api-keys.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+</html>
